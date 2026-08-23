@@ -1,0 +1,947 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    color: #312f36;
+}
+
+
+.content {
+    flex: 1;
+    padding: 28px 28px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.sub-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #312f36;
+    margin-left: 20px;
+    margin-top: 20px;
+    line-height: 1.55;
+    margin-bottom: 0px;
+    animation: fadeDown 0.5s 0.1s ease both;
+}
+
+.sub-sub-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #312f36;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 0px;
+    line-height: 1.55;
+    margin-bottom: 28px;
+    animation: fadeDown 0.5s 0.1s ease both;
+}
+
+
+header {
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+    justify-content: space-between;
+    border-bottom: #1c7bb8 solid 1px;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.header-center {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    right: 20px;
+    top: 8px;
+}
+
+header .sininho {
+    font-size: 33px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.a-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #312f36;
+    text-align: left;
+    font-style: normal !important;
+    text-decoration: none !important;
+    line-height: 1.2;
+    animation: fadeDown 0.5s 0.1s ease both;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.submenu-wrapper {
+    position: relative;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: solid 1px black;
+    background-color: #f3eefaef;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 3px;
+    margin-top: 2px;
+    font-size: 28px;
+    padding: 10px;
+    width: 320px;
+}
+
+.sidebar-header {
+    width: 100%;
+    height: 100px;
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 18px;
+    gap: 16px;
+    text-decoration: none !important;
+}
+
+.sidebar-item i {
+    width: 25px;
+    text-align: center;
+}
+
+.wrapper-atividades {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.title-atividades {
+    font-size: 16px;
+    font-weight: 700;
+    color: #565361;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 12px;
+    animation: fadeDown 0.5s 0.1s ease both;
+    position: absolute;
+    text-align: left;
+    left: 2px;
+    margin-left: 15px;
+    margin-top: -25px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.card-atividades {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.card {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.card h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #312f36;
+    text-align: left;
+    line-height: 1.55;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #565361;
+    text-align: left;
+    line-height: 1.55;
+}
+
+.matematica {
+    border-left: 4px solid #b81c1c;
+}
+
+.filosofia {
+    border-left: 4px solid #6d1cb8;
+}
+
+.geografia {
+    border-left: 4px solid #db7a1f;
+}
+
+.ingles {
+    border-left: 4px solid #1c7bb8;
+}
+
+.card-atividades-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #312f36;
+    text-align: left;
+    line-height: 1.55;
+    margin-bottom: 8px;
+}
+
+
+.card-atividades-data {
+    font-size: 14px;
+    font-weight: 500;
+    color: #565361;
+    text-align: left;
+    line-height: 1.55;
+    margin-top: 8px;
+}
+
+.card-atividades-status {
+    font-size: 14px;
+    font-weight: 500;
+    color: #565361;
+    text-align: left;
+    line-height: 1.55;
+    margin-top: 8px;
+}
+
+
+.resumo-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #565361;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 12px;
+    animation: fadeDown 0.5s 0.1s ease both;
+    text-align: left;
+    left: 2px;
+    margin-left: -10px;
+}
+
+.resumo-section {
+    width: 328px !important;
+}
+
+.resumo-scroll-wrap {
+    width: 340px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-left: 2px;
+}
+
+.resumo-scroll-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.resumo-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: max-content;
+}
+
+.resumo-card {
+    flex: 0 0 130px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.resumo-card-num {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.resumo-card-label {
+    font-size: 12px;
+    color: #6b6478;
+    line-height: 1.4;
+}
+
+.verde .resumo-card-num {
+    color: #1D9E75;
+}
+
+.amarelo .resumo-card-num {
+    color: #BA7517;
+}
+
+.azul .resumo-card-num {
+    color: #378ADD;
+}
+
+.vermei .resumo-card-num {
+    color: #E24B4A;
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+
+/* Evita estouro horizontal em qualquer tela */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Elementos nunca podem ultrapassar o pai */
+.content,
+.sidebar,
+.wrapper-atividades,
+.cards-container,
+.card-atividades,
+.resumo-section,
+.resumo-scroll-wrap {
+    max-width: 100%;
+}
+
+/* ============================================================
+   DESKTOP GRANDE
+   1440px+
+   ============================================================ */
+
+@media (min-width: 1440px) {
+
+    .content {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 28px;
+    }
+
+    .sidebar {
+        width: 320px;
+        height: min(950px, calc(100vh - 5px));
+    }
+
+    .wrapper-atividades {
+        width: 100%;
+    }
+
+    .cards-container {
+        width: 100%;
+        max-height: 500px;
+    }
+
+    .resumo-section {
+        width: 328px !important;
+    }
+
+    .resumo-scroll-wrap {
+        width: 340px !important;
+    }
+}
+
+
+/* ============================================================
+   DESKTOP / NOTEBOOK
+   1024px até 1439px
+   ============================================================ */
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+
+    .content {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+
+    .sidebar {
+        width: 300px;
+        height: min(850px, calc(100vh - 5px));
+    }
+
+    .sidebar-item {
+        margin: 14px;
+        gap: 12px;
+    }
+
+    .a-text {
+        font-size: 14px;
+    }
+
+    .wrapper-atividades {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .cards-container {
+        width: 100%;
+        max-height: 50vh;
+    }
+
+    .resumo-section {
+        width: 100% !important;
+        max-width: 328px;
+    }
+
+    .resumo-scroll-wrap {
+        width: 100% !important;
+        max-width: 340px;
+    }
+}
+
+
+/* ============================================================
+   TABLET
+   769px até 1023px
+   ============================================================ */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+    .content {
+        width: 100%;
+        min-height: 100vh;
+        padding: 22px 20px;
+    }
+
+    header {
+        width: 100%;
+    }
+
+    .sub-text,
+    .sub-sub-text {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        min-height: 0;
+    }
+
+    .sidebar-header {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+    }
+
+    .sidebar-item {
+        width: calc(100% - 20px);
+        margin: 10px;
+        gap: 12px;
+    }
+
+    .wrapper-atividades {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    .title-atividades {
+        position: static;
+        width: 100%;
+        margin: 0 0 12px;
+    }
+
+    .cards-container {
+        width: 100%;
+        max-height: 50vh;
+    }
+
+    .resumo-section {
+        width: 100% !important;
+    }
+
+    .resumo-title {
+        margin-left: 0;
+    }
+
+    .resumo-scroll-wrap {
+        width: 100% !important;
+        margin-left: 0;
+    }
+}
+
+
+/* ============================================================
+   CELULAR
+   até 768px
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    body {
+        min-height: 100dvh;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100dvh;
+
+        padding: 16px;
+        margin: 0;
+
+        align-items: stretch;
+    }
+
+    /* HEADER */
+
+    header {
+        width: 100%;
+        max-width: 100%;
+        min-height: 60px;
+    }
+
+    header .sininho {
+        margin: 12px;
+        font-size: clamp(25px, 7vw, 31px);
+    }
+
+    /* TEXTOS */
+
+    .sub-text,
+    .sub-sub-text {
+        width: 100%;
+        max-width: 100%;
+
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .sub-text {
+        margin-top: 14px;
+        font-size: 17px;
+    }
+
+    .sub-sub-text {
+        margin-top: 3px;
+        margin-bottom: 20px;
+        font-size: 13px;
+    }
+
+    .layout {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+        width: 100%;
+        max-width: 100%;
+
+        height: auto;
+        min-height: 0;
+
+        margin: 0;
+        padding: 8px;
+
+        font-size: 22px;
+    }
+
+    .sidebar-header {
+        width: 100%;
+        height: auto;
+        min-height: 60px;
+    }
+
+    .sidebar-item {
+        width: 100%;
+        min-width: 0;
+
+        margin: 0;
+        padding: 12px 8px;
+
+        gap: 10px;
+    }
+
+    .sidebar-item i {
+        flex: 0 0 25px;
+    }
+
+    .a-text {
+        flex: 1;
+        min-width: 0;
+
+        font-size: 13px;
+
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    /* SUBMENU */
+
+    .submenu-wrapper {
+        width: 100%;
+    }
+
+    .submenu-mais {
+        left: 0;
+        bottom: auto;
+        top: 100%;
+
+        width: 100%;
+        max-width: 220px;
+
+        padding: 10px;
+
+        z-index: 100;
+    }
+
+    .submenu-mais.aberto {
+        width: min(220px, calc(100vw - 32px));
+        margin-left: 0;
+    }
+
+    /* ATIVIDADES */
+
+    .wrapper-atividades {
+        width: 100%;
+        max-width: 100%;
+
+        margin-top: 30px;
+
+        align-items: stretch;
+    }
+
+    .title-atividades {
+        position: static;
+
+        width: 100%;
+
+        margin: 0 0 10px;
+
+        font-size: 14px;
+    }
+
+    .cards-container {
+        width: 100%;
+        max-width: 100%;
+
+        max-height: none;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .card-atividades {
+        width: 100%;
+        max-width: 100%;
+
+        margin-top: 7px;
+        padding: 13px;
+    }
+
+    .card-atividades-title,
+    .card-atividades-data,
+    .card-atividades-status {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
+    }
+
+    /* RESUMO */
+
+    .resumo-section {
+        width: 100% !important;
+        max-width: 100%;
+
+        margin-top: 25px;
+    }
+
+    .resumo-title {
+        margin-left: 0;
+    }
+
+    .resumo-scroll-wrap {
+        width: 100% !important;
+        max-width: 100%;
+
+        margin-left: 0;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+    }
+
+    .resumo-inner {
+        display: flex;
+
+        width: max-content;
+        min-width: max-content;
+
+        gap: 10px;
+    }
+
+    .resumo-card {
+        flex: 0 0 125px;
+
+        scroll-snap-align: start;
+    }
+}
+
+
+/* ============================================================
+   CELULAR PEQUENO
+   até 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .content {
+        padding: 12px;
+    }
+
+    header .sininho {
+        margin: 8px;
+        font-size: 26px;
+    }
+
+    .sub-text {
+        font-size: 16px;
+    }
+
+    .sub-sub-text {
+        font-size: 12px;
+    }
+
+    .sidebar {
+        padding: 6px;
+    }
+
+    .sidebar-item {
+        padding: 10px 6px;
+        gap: 8px;
+    }
+
+    .a-text {
+        font-size: 12.5px;
+    }
+
+    .wrapper-atividades {
+        margin-top: 22px;
+    }
+
+    .card-atividades {
+        padding: 12px;
+    }
+
+    .card-atividades-title,
+    .card-atividades-data,
+    .card-atividades-status {
+        font-size: 13px;
+    }
+
+    .resumo-card {
+        flex-basis: 120px;
+        padding: 12px;
+    }
+
+    .resumo-card-num {
+        font-size: 24px;
+    }
+}
+
+
+/* ============================================================
+   CELULAR MUITO PEQUENO
+   até 360px
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .content {
+        padding: 8px;
+    }
+
+    .sidebar {
+        padding: 5px;
+    }
+
+    .sidebar-item {
+        padding: 9px 5px;
+        gap: 6px;
+    }
+
+    .sidebar-item i {
+        flex-basis: 22px;
+    }
+
+    .a-text {
+        font-size: 11.5px;
+    }
+
+    .resumo-card {
+        flex-basis: 110px;
+        padding: 10px;
+    }
+
+    .resumo-card-num {
+        font-size: 22px;
+    }
+
+    .resumo-card-label {
+        font-size: 10px;
+    }
+}
+
+
+/* ============================================================
+   CELULAR LANDSCAPE
+   ============================================================ */
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+    .content {
+        min-height: 100dvh;
+        padding: 10px 16px;
+    }
+
+    .sidebar {
+        height: auto;
+    }
+
+    .sidebar-item {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .wrapper-atividades {
+        margin-top: 18px;
+    }
+
+    .cards-container {
+        max-height: none;
+    }
+}
+
+
+/* ============================================================
+   NOTEBOOK COM ALTURA PEQUENA
+   ============================================================ */
+
+@media (min-width: 769px) and (max-height: 700px) {
+
+    .content {
+        padding-top: 12px;
+    }
+
+    .sidebar {
+        height: calc(100dvh - 24px);
+        min-height: 0;
+        overflow-y: auto;
+    }
+
+    .sidebar-header {
+        height: 60px;
+    }
+
+    .sidebar-item {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .wrapper-atividades {
+        margin-top: 20px;
+    }
+
+    .cards-container {
+        max-height: 38vh;
+    }
+}
+
+
+/* ============================================================
+   REDUZIR ANIMAÇÕES
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
