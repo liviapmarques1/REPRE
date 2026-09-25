@@ -4,7 +4,7 @@
 /* RESUMO WRAPPER */
 document.addEventListener('DOMContentLoaded', () => {
 
-    const resumoScroll = document.getElementById('resumoScroll');
+    const resumoScroll = document.getElementById('summaryScroll');
 
     if (resumoScroll) {
 
@@ -79,20 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
         status
     }) {
         return `
-    <div class="card-atividades">
+    <div class="card-activities">
 
-        <div class="card-atividades-title">
+        <div class="card-activities-title">
             ${materia}
         </div>
 
         <div class="atividade-conteudo">
 
-            <h3 class="card-atividades-conteudo">
+            <h3 class="card-activities-conteudo">
                 ${titulo}
             </h3>
 
             <div class="atividade-informacoes">
-                <span class="card-atividades-data">
+                <span class="card-activities-data">
                     <i class="fa-regular fa-calendar"></i>
                     ${data}
                 </span>
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div class="atividade-status">
-            <span class="card-atividades-status">
+            <span class="card-activities-status">
                 ${status}
             </span>
         </div>

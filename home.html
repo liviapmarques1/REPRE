@@ -17,176 +17,176 @@
 
   <header id="headerSet"></header>
 
+
   <main>
-    <div class="containerWelcome">
-      <section class="welcome">
-        <div class="welcome-text">
-          <h1>
-            Bem-vindo(a), {Nome do Usuário}!
-          </h1>
-          <p>
-            Confira suas atividades abaixo
-          </p>
+    <section class="welcome">
+      <h1>
+        Bem-vindo(a), [user]!
+      </h1>
+      <p>
+        Confira suas atividades abaixo
+      </p>
+    </section>
+
+
+
+
+    <section class="summary-section">
+
+      <h2 class="summary-title">
+        Resumo de suas Atividades
+      </h2>
+
+
+      <div id="summaryScroll">
+
+        <div class="summary-inner">
+
+          <div class="summary-card green">
+            <span class="summary-card-num"><i class="fa-regular fa-circle-check" style="color: #30b75f;"></i>
+              [x]</span>
+            <span class="summary-card-label">
+              Concluídas
+            </span>
+          </div>
+
+          <div class="summary-card yellow">
+            <span class="summary-card-num"><i class="fa-solid fa-hourglass-half" style="color: #f39c12;"></i>
+              [x]</span>
+            <span class="summary-card-label">
+              Pendentes
+            </span>
+          </div>
+
+          <div class="summary-card blue">
+            <span class="summary-card-num"><i class="fa-solid fa-person-walking" style="color: #3498db;"></i>
+              [x]</span>
+            <span class="summary-card-label">
+              Em Andamento
+            </span>
+          </div>
+
+          <div class="summary-card red">
+            <span class="summary-card-num"><i class="fa-solid fa-clock" style="color: #e74c3c;"></i>
+              [x]</span>
+            <span class="summary-card-label">
+              Atrasadas
+            </span>
+          </div>
+
         </div>
-        <div class="citacao">
-          “A alfabetização, portanto, é toda a pedagogia: aprender a ler é aprender a dizer a sua palavra. E a sua
-          palavra humana imita a palavra divina: é criadora.”- Paulo Freire
-        </div>
-      </section>
-
-      <div class="dashboard-conteudo">
-
-        <section class="resumo-section">
-
-          <h2 class="resumo-title">
-            Resumo Diário
-          </h2>
-
-          <div class="resumo-scroll-wrap" id="resumoScroll">
-
-            <div class="resumo-inner">
-
-              <div class="resumo-card verde">
-                <span class="resumo-card-num"><i class="fa-regular fa-circle-check" style="color: #30b75f;"></i>
-                  10</span>
-                <span class="resumo-card-label">
-                  Atividades Concluídas
-                </span>
-              </div>
-
-              <div class="resumo-card amarelo">
-                <span class="resumo-card-num"><i class="fa-solid fa-hourglass-half" style="color: #f39c12;"></i>
-                  10</span>
-                <span class="resumo-card-label">
-                  Atividades Pendentes
-                </span>
-              </div>
-
-              <div class="resumo-card azul">
-                <span class="resumo-card-num"><i class="fa-solid fa-person-walking" style="color: #3498db;"></i>
-                  10</span>
-                <span class="resumo-card-label">
-                  Atividades em Andamento
-                </span>
-              </div>
-
-              <div class="resumo-card vermei">
-                <span class="resumo-card-num"><i class="fa-solid fa-clock" style="color: #e74c3c;"></i> 10</span>
-                <span class="resumo-card-label">
-                  Atividades Atrasadas
-                </span>
-              </div>
-
-            </div>
-          </div>
-        </section>
+      </div>
+    </section>
 
 
-        <section class="wrapper-atividades">
-          <div class="atividades-coluna">
+    <section class="wrapper-activities">
+      <div class="activities-coluna">
 
-            <div class="atividades-header">
-              <div class="atividades-titulo">
-                <i class="fa-regular fa-calendar"></i>
-                <h2 class="title-atividades">
-                  Atividades Pendentes
-                </h2>
-                <span class="contador-atividades">
-                  10 tarefas
-                </span>
-              </div>
-
-
-              <select class="filtro-materias" id="filtro-materias">
-                <option value="todas">
-                  Todas as matérias
-                </option>
-                <option value="matematica">
-                  Matemática
-                </option>
-                <option value="filosofia">
-                  Filosofia
-                </option>
-                <option value="geografia">
-                  Geografia
-                </option>
-                <option value="ingles">
-                  Inglês
-                </option>
-                <option value="historia">
-                  História
-                </option>
-              </select>
-            </div>
-
-            <div class="cards-container" id="cards-container">
-            </div>
-            <div class="ver-todas-atividades">
-              <a href="#">
-                Ver todas as atividades
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </section>
-
-
-
-        <section class="coluna-calendario">
-
-          <div class="calendario">
-            <div class="calendario-header">
-              <button id="prev">❮</button>
-              <h2 id="mes"></h2>
-
-              <button id="next">❯</button>
-
-            </div>
-
-
-            <div class="weekdays">
-
-              <span>D</span>
-              <span>S</span>
-              <span>T</span>
-              <span>Q</span>
-              <span>Q</span>
-              <span>S</span>
-              <span>S</span>
-
-            </div>
-
-
-            <div id="calendarDays" class="days">
-            </div>
-          </div>
-
-          <div id="eventoInfo" class="evento-info">
-
-            Selecione uma data
-
-          </div>
-
-
-          <!-- PRÓXIMAS ATIVIDADES -->
-
-          <div class="wrapper-proximos">
-
-            <h2 class="title-proximo">
-              Próximas atividades
+        <div class="activities-header">
+          <div class="activities-titulo">
+            <i class="fa-regular fa-calendar"></i>
+            <h2 class="title-activities">
+              Atividades Pendentes
             </h2>
-
-            <div class="cards-container" id="proximos-container">
-            </div>
-
+            <span class="contador-activities">
+              10 tarefas
+            </span>
           </div>
+
+
+          <select class="filtro-materias" id="filtro-materias">
+            <option value="todas">
+              Todas as matérias
+            </option>
+            <option value="matematica">
+              Matemática
+            </option>
+            <option value="filosofia">
+              Filosofia
+            </option>
+            <option value="geografia">
+              Geografia
+            </option>
+            <option value="ingles">
+              Inglês
+            </option>
+            <option value="historia">
+              História
+            </option>
+          </select>
+        </div>
+
+        <div class="cards-container" id="cards-container">
+        </div>
+        <div class="ver-todas-activities">
+          <a href="#">
+            Ver todas as atividades
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="coluna-calendario">
+
+      <div class="calendario">
+        <div class="calendario-header">
+          <button id="prev">❮</button>
+          <h2 id="mes"></h2>
+
+          <button id="next">❯</button>
+
+        </div>
+
+
+        <div class="weekdays">
+
+          <span>D</span>
+          <span>S</span>
+          <span>T</span>
+          <span>Q</span>
+          <span>Q</span>
+          <span>S</span>
+          <span>S</span>
+
+        </div>
+
+
+        <div id="calendarDays" class="days">
+        </div>
+      </div>
+
+      <div id="eventoInfo" class="evento-info">
+
+        Selecione uma data
+
+      </div>
+
+
+      <!-- PRÓXIMAS ATIVIDADES -->
+
+      <div class="wrapper-proximos">
+
+        <h2 class="title-proximo">
+          Próximas atividades
+        </h2>
+
+        <div class="cards-container" id="proximos-container">
+        </div>
+
+      </div>
       </div>
 
   </main>
   <footer class="footer">
     © Todos os direitos reservados à New World.
   </footer>
-
+  <div class="citacao">
+    “A alfabetização, portanto, é toda a pedagogia: aprender a ler é aprender a dizer a sua palavra. E a sua
+    palavra humana imita a palavra divina: é criadora.”- Paulo Freire
+  </div>
 
   <script src="Script/home.js"></script>
   <script src="Script/headerSet.js"></script>
