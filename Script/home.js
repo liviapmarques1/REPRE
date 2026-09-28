@@ -1,7 +1,7 @@
 
 
 
-/* RESUMO WRAPPER */
+/* RESUMO WRAPPER - Colocar o Banco de Dados aqui*/
 document.addEventListener('DOMContentLoaded', () => {
 
     const resumoScroll = document.getElementById('summaryScroll');
@@ -36,28 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* ATIVIDADES WRAPPER */
+    /* ATIVIDADES WRAPPER - Coloca o Banco de Dados aqui*/
     const atividades = [
         {
-            materia: "matematica",
+            materia: "Matemática",
             titulo: "Lista de Exercícios",
             data: "20/06/2026",
             status: "Pendente"
         },
         {
-            materia: "filosofia",
+            materia: "Filosofia",
             titulo: "Questionário",
             data: "22/06/2026",
             status: "Pendente"
         },
         {
-            materia: "geografia",
+            materia: "Geografia",
             titulo: "Pesquisa sobre Globalização",
             data: "25/06/2026",
             status: "Pendente"
         },
         {
-            materia: "ingles",
+            materia: "Ingles",
             titulo: "Seminário de Filmes",
             data: "27/06/2026",
             status: "Pendente"
@@ -83,29 +83,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="card-activities-title">
             ${materia}
-        </div>
-
-        <div class="atividade-conteudo">
-
-            <h3 class="card-activities-conteudo">
-                ${titulo}
-            </h3>
-
-            <div class="atividade-informacoes">
-                <span class="card-activities-data">
-                    <i class="fa-regular fa-calendar"></i>
-                    ${data}
-                </span>
-            </div>
-
-        </div>
-
-        <div class="atividade-status">
             <span class="card-activities-status">
                 ${status}
             </span>
         </div>
 
+        <div class="activities-content">
+
+            <h3 class="title-activities-content">
+                ${titulo}
+            </h3>
+
+            <div class="card-activities-date">
+                <i class="fa-regular fa-calendar"></i>
+                ${data}
+            </div>
+
+
+        </div>
     </div>
 `;
     }
@@ -119,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-    /* CALENDÁRIO */
+/* CALENDÁRIO */
 const monthYear = document.getElementById("mes");
 const daysContainer = document.getElementById("calendarDays");
 const eventInfo = document.getElementById("eventoInfo");
