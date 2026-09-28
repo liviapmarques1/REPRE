@@ -131,30 +131,6 @@ const eventos = {
         titulo: "OBMEP"
     },
 
-    "2026-06-03": {
-        tipo: "prova",
-        titulo: "Prova"
-    },
-
-    "2026-06-08": {
-        tipo: "prova",
-        titulo: "Prova"
-    },
-
-    "2026-06-12": {
-        tipo: "festa",
-        titulo: "Festa Junina"
-    },
-
-    "2026-06-22": {
-        tipo: "festa",
-        titulo: "Festa"
-    },
-
-    "2026-07-06": {
-        tipo: "ferias",
-        titulo: "Início das Férias"
-    }
 };
 
 
@@ -263,23 +239,11 @@ const proximos = [
         status: "Concluída"
     },
 
-    {
-        materia: "Prova",
-        titulo: "Prova",
-        data: "08/06/2026"
-    },
-
-    {
-        materia: "Festa",
-        titulo: "Festa",
-        data: "22/06/2026",
-        status: "Concluída"
-    }
 ];
 
 
 const proximosContainer =
-    document.getElementById("proximos-container");
+    document.getElementById("next-container");
 
 if (!proximosContainer) {
     console.error(
@@ -299,13 +263,13 @@ function criarCardAtividade({
     status
 }) {
     return `
-        <div class="card-proximos">
+        <div class="card-next">
 
-            <div class="card-proximos-title">
+            <div class="card-next-title">
                 ${materia} - ${titulo}
             </div>
 
-            <div class="card-proximos-data">
+            <div class="card-next-date">
                 ${data}
             </div>
 
