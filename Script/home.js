@@ -1,6 +1,4 @@
 
-
-
 /* RESUMO WRAPPER - Colocar o Banco de Dados aqui*/
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -32,6 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseup', () => {
             isDragging = false;
             resumoScroll.classList.remove('grabbing');
+        });
+        resumoScroll.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].pageX;
+            scrollLeft = resumoScroll.scrollLeft;
+        });
+
+        // CELULAR - arrastando
+        resumoScroll.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+
+            const walk = e.touches[0].pageX - startX;
+            resumoScroll.scrollLeft = scrollLeft - walk;
+        });
+
+        // CELULAR - terminou de tocar
+        resumoScroll.addEventListener('touchend', () => {
+            isDragging = false;
         });
     }
 
@@ -115,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* CALENDÁRIO */
-const monthYear = document.getElementById("mes");
+const monthYear = document.getElementById("month");
 const daysContainer = document.getElementById("calendarDays");
 const eventInfo = document.getElementById("eventoInfo");
 
