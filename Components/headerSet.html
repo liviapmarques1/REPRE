@@ -106,6 +106,7 @@
     #navbar.opened {
         transform: translateY(0);
     }
+
     #navbar button {
         border: 1px solid #dddff0;
         padding: 10px 15px;
@@ -139,15 +140,83 @@
         white-space: nowrap;
         transition: all 0.25s ease;
     }
+
+    @media (min-width: 768px) {
+        header {
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 20px;
+            box-shadow: 7px 7px 7px #3333333b;
+            width: 90%;
+        }
+
+        #menu-btn,
+        #navbar button,
+        #navbar .profileLink {
+            display: none;
+        }
+
+        #navbar {
+            display: flex;
+            flex-direction: row;
+            position: static;
+            width: auto;
+            height: auto;
+            background: transparent;
+            transform: none;
+        }
+        #navbar a {
+            font-size: 18px;
+        }
+
+    }
+
+    @media (min-width: 1200px) {
+
+        header {
+            box-shadow: 16px 7px 16px #33333369;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        #navbar {
+            gap: 100px;
+        }
+
+        #navbar a {
+            font-size: 20px;
+        }
+
+        .profile {
+            height: 40px;
+            width: 40px;
+        }
+        span .bell{
+
+        }
+    }
 </style>
 
 <header>
-    <a href="home.html">
-        <div class="logo">
-            <img src="Images/Logo.png" alt="Logo" height="30">
-            REPRE
-        </div>
+    <a href="home.html" class="logo">
+        <img src="Images/Logo.png" alt="Logo" height="30">
+        REPRE
     </a>
+    <nav id="navbar">
+        <a href="activites.html">Atividades</a>
+        <a href="#">Desempenho</a>
+        <a href="#">Comunidade</a>
+        <a href="" class="profileLink">Meu Perfil</a>
+        <button>X</button>
+    </nav>
     <div class="header-options">
         <button id="menu-btn">☰</button>
 
@@ -159,12 +228,5 @@
             <img src="imagem-foto-perfil.jpg" class="profile">
         </a>
     </div>
-</header>
 
-<nav id="navbar">
-    <a href="activites.html">Atividades</a>
-    <a href="#">Desempenho</a>
-    <a href="#">Comunidade</a>
-    <a href="">Meu Perfil</a>
-    <button>X</button>
-</nav>
+</header>

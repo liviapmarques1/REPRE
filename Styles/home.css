@@ -538,23 +538,11 @@ body {
 }
 
 @media (min-width: 768px) {
-    
+    .welcome{
+        margin: 20px;
+    }
 }
 
 @media (min-width: 1200px) {
-    .card h2{
-        font-size: 23px;
-    }
-    .card{
-        gap: 40px;
-    }
-    .principal-form{
-        display: flex;
-        align-items: center;
-    }
-    
-    .form-input{
-        font-size: 18px;
-        max-width: 450px;
-    }
+   
 }
