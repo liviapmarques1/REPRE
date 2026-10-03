@@ -96,27 +96,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }) {
         return `
     <div class="card-activities">
-
-        <div class="card-activities-title">
-            ${materia}
-            <span class="card-activities-status">
-                ${status}
-            </span>
-        </div>
-
-        <div class="activities-content">
-
-            <h3 class="title-activities-content">
-                ${titulo}
-            </h3>
-
-            <div class="card-activities-date">
-                <i class="fa-regular fa-calendar"></i>
-                ${data}
+        <div class="card-title-date">
+            <div class="card-activities-title">
+                ${materia}
             </div>
 
-
+            <div class="activities-content">
+                <div class="card-activities-date">
+                    ${data}
+                </div>
+            </div>
         </div>
+        <h3 class="title-activities-content">
+                ${titulo}
+        </h3>
     </div>
 `;
     }

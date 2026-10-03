@@ -5,10 +5,14 @@ fetch("Components/headerSet.html") //Procura o arquivo
 
         //=========================================
         const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
         const navbar = document.getElementById("navbar");
 
         menuBtn.addEventListener("click", () => {
             navbar.classList.toggle("opened");
+        });
+        closeBtn.addEventListener("click", () => {
+            navbar.classList.remove("opened");
         });
         //=============================================
     });

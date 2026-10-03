@@ -33,11 +33,11 @@
     text-decoration: none;
     color: inherit;
 }
-html {
-  overflow-y: overlay;
-}
+
+html {}
 
 body {
+    padding-top: 90px;
     font-family: 'Montserrat', sans-serif;
     background-color: #f0eef8;
     display: flex;
@@ -49,12 +49,18 @@ body {
 
 .welcome {
     background: linear-gradient(110deg, #fffffff5, #f3ebff);
-    padding: 90px 10px 25px;
+    padding: 25px 10px;
     display: flex;
     flex-direction: column;
 
     margin-bottom: 20px;
     animation: fadeDown .5s .1s ease both;
+    gap: 10px;
+}
+
+.welcome-title {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -146,7 +152,6 @@ body {
 
 
 .wrapper-activities {
-    margin: 0px 10px;
     background: rgba(255, 255, 255, 0.96);
     border-radius: 20px;
     padding: 15px 10px;
@@ -181,7 +186,7 @@ body {
 }
 
 .activities-title h2 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 750;
     color: #17245c;
 }
@@ -237,16 +242,15 @@ body {
 
 
 .card-activities {
-    min-height: 85px;
+    min-height: 75px;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
     border: 1px solid #e2e3ef;
     border-left: 4px solid #7351e8;
     border-radius: 15px;
     transition: .2s ease;
-    justify-content: space-between;
 }
 
 .card-activities:hover {
@@ -256,10 +260,16 @@ body {
     cursor: pointer;
 }
 
+.card-title-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .card-activities-title {
     color: #101d52;
     font-size: 18px;
-    font-weight: 750;
+    font-weight: 650;
     line-height: 1.3;
     display: flex;
     flex-direction: column;
@@ -279,24 +289,24 @@ body {
 .activities-content {
     display: flex;
     flex-direction: column;
-    align-items:end;
+    align-items: end;
 }
 
 
 .title-activities-content {
     color: #101d52;
     font-size: 15px;
-    font-weight: 650;
+    font-weight: 500;
     line-height: 1.3;
     display: flex;
     flex-direction: column;
-    text-align: right;
 }
 
 
 .card-activities-date {
     display: flex;
     align-items: center;
+    justify-content: start;
     gap: 4px;
     color: #7180a3;
     font-size: 15px;
@@ -307,7 +317,7 @@ body {
     font-size: 18px;
 }
 
-.see-all-activities{
+.see-all-activities {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -337,11 +347,18 @@ body {
     width: 100%;
     padding: 20px 10px;
 }
-.calendar-section h2{
+
+.calendar-section h2 {
     text-align: center;
     font-size: 22px;
     font-weight: 750;
     color: #17245c;
+}
+
+.next-events {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .calendar {
@@ -405,8 +422,10 @@ body {
 
 .day,
 .today {
-    width: 35px;
-    height: 35px;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 40px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -431,9 +450,10 @@ body {
     font-weight: bold;
 }
 
-#month{
+#month {
     font-size: 20px;
 }
+
 #eventInfo {
     padding: 15px;
     border-radius: 12px;
@@ -498,7 +518,7 @@ body {
 
 
 
-.citacao {
+.quote, .onlyPc-quote {
     font-style: italic;
     color: #422e79;
     max-width: 500px;
@@ -506,6 +526,10 @@ body {
     line-height: 1.5;
     font-size: 15px;
     font-weight: 600;
+}
+
+.onlyPc-quote {
+    display: none;
 }
 
 ::-webkit-scrollbar {
@@ -538,11 +562,132 @@ body {
 }
 
 @media (min-width: 768px) {
-    .welcome{
-        margin: 20px;
+    body {
+        padding-top: 0px;
+    }
+
+    .wrapper-activities {
+        margin: 0px 20px;
+    }
+
+    .wrapper-activities h2 {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+
+    .welcome {
+        padding: 130px 30px 25px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .calendar-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .calendar {
+        max-width: 95%;
+    }
+
+    .next-events {
+        width: 48%;
+        align-items: center;
+    }
+
+    #eventInfo {
+        width: 95%;
+    }
+
+    .wrapper-next {
+        width: 48%;
+    }
+
+    .next-events h2 {
+        font-size: 27px;
+    }
+
+    .quote {
+        display: none;
+    }
+
+    .onlyPc-quote {
+        display: flex;
+        max-width: 40%;
+        text-align: right;
     }
 }
 
 @media (min-width: 1200px) {
-   
+    body {
+        padding-top: 120px;
+    }
+
+    main {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .welcome {
+        padding: 30px 35px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .welcome h1 {
+        font-size: 35px;
+    }
+
+    .welcome p {
+        font-size: 22px;
+    }
+
+    .column-1 {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .calendar-section {
+        flex-direction: column;
+        width: 35%;
+    }
+
+    .next-events,
+    .wrapper-next {
+        width: 100%;
+    }
+
+    .wrapper-activities h2 {
+        font-size: 27px;
+    }
+
+    .card-activities-title {
+        font-size: 20px;
+    }
+
+    .title-activities-content {
+        font-size: 16px;
+    }
+
+    .see-all-activities,
+    .see-all-activities i {
+        font-size: 15px;
+    }
+
+    .quote {
+        display: none;
+    }
+
+    .onlyPc-quote {
+        display: flex;
+        max-width: 40%;
+        text-align: right;
+        font-size: 17px;
+    }
+
 }
