@@ -1,29 +1,3 @@
-:root {
-    --branco: rgba(255, 255, 255, 1);
-    --fundo: rgb(236, 236, 255);
-    --card: rgb(241, 241, 241);
-    --roxo: rgba(109, 66, 219, 1);
-    --roxo-claro: rgba(137, 103, 229, 1);
-    --roxo-suave: rgba(245, 241, 254, 1);
-    --texto: rgba(31, 37, 70, 1);
-    --texto-secundario: rgba(89, 78, 125, 1);
-    --texto-fraco: rgba(138, 141, 161, 1);
-    --borda: rgb(83, 84, 85);
-    --borda-clara: rgba(238, 240, 246, 1);
-    --verde: rgba(48, 183, 95, 1);
-    --verde-suave: rgba(243, 248, 249, 1);
-    --vermelho: rgba(240, 88, 101, 1);
-    --vermelho-suave: rgba(254, 238, 240, 1);
-    --azul: rgba(42, 133, 232, 1);
-    --azul-suave: rgba(235, 244, 253, 1);
-    --laranja: rgba(249, 132, 15, 1);
-    --laranja-suave: rgba(255, 245, 232, 1);
-    --sombra: 0 4px 20px rgba(31, 37, 70, .06);
-    --sombra-hover: 0 8px 28px rgba(109, 66, 219, .12);
-    --raio: 14px;
-    --transicao: .25s ease
-}
-
 *,
 *::before,
 *::after {
@@ -33,8 +7,6 @@
     text-decoration: none;
     color: inherit;
 }
-
-html {}
 
 body {
     padding-top: 90px;
