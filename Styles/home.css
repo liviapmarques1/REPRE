@@ -521,7 +521,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--roxo)
+    background: var(--main-purple)
 }
 
 @keyframes fadeDown {
