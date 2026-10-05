@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if ($error): ?>
           <p role="alert" style="color:#c0392b;"><?= e($error) ?></p>
         <?php endif; ?>
-        <form action="cadastro.php" method="post" class="principal-form">
+        <form action="register.php" method="post" class="principal-form">
  <label for="tipo">Tipo de conta</label>
 
     <select name="tipo" id="tipo" class="form-input" required>

@@ -38,7 +38,7 @@ try {
 <body>
   <nav class="navbar"> <a href="home.php" class="logo"> REPRE </a>
     <div class="nav-links"> <a href="home.php">Início</a> <a href="desempenho.php">Desempenho</a> <a href="perfil.php"
-        class="ativo">Perfil</a> </div> <a href="logout.php" class="btn-sair"> Sair </a>
+        class="ativo">Perfil</a> </div> <a href="Functions/logout.php" class="btn-sair"> Sair </a>
   </nav>
   <main class="perfil-container">
     <div class="perfil-header">
@@ -90,7 +90,7 @@ try {
         <div class="card-titulo">
           <h2>Sair da conta</h2> <span>🚪</span>
         </div>
-        <p> Ao sair, sua sessão atual será encerrada. </p> <a href="logout.php" class="botao-sair"> Sair da conta </a>
+        <p> Ao sair, sua sessão atual será encerrada. </p> <a href="Functions/logout.php" class="botao-sair"> Sair da conta </a>
       </section>
     </div>
   </main>

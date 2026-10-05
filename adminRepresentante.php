@@ -1,7 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/Settings/auth.php';
+
+
+require_once 'Settings/permissoes.php';
 
 require_role(['representante']);
 
@@ -49,166 +53,89 @@ $stmt->execute([
 ]);
 
 $atividades = (int) $stmt->fetchColumn();
+
+$sql = "
+    SELECT COUNT(*)
+    FROM eventos e
+    INNER JOIN turma_membros tm
+        ON tm.turma_id = e.turma_id
+    WHERE tm.aluno_id = :aluno_id
+      AND tm.papel = 'representante'
+";
+
+$stmt = db()->prepare($sql);
+$stmt->execute([':aluno_id' => $usuarioId]);
+$eventos = (int) $stmt->fetchColumn();
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Administração do Representante - REPRE</title>
-
-    <link rel="stylesheet" href="adminRepresentante.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repre</title>
+    <link rel="shortcut icon" href="Images/Logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="Styles/adminRepresentante.css" />
+    <link rel="stylesheet" href="Styles/root.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 
 <body>
-
-<div class="pagina">
-
-    <!-- NAVBAR -->
-    <nav class="navbar">
-
-        <a href="home.php" class="logo">
-            REPRE
-        </a>
-
-        <div class="nav-links">
-
-        <a href="home.php">Home</a>
-
-        <a href="#">Atividades</a>
-
-        <a href="#">
-            Calendário
-            <i class="fa-solid fa-caret-down"></i>
-        </a>
-
-        <a href="desempenho.php">Desempenho</a>
-
-        <a href="#">
-            Atlética e Grêmio
-            <i class="fa-solid fa-caret-down"></i>
-        </a>
-
-        <a href="adminRepresentante.php" class="ativo">
-            <i class="fa-solid fa-people-group"></i>
-            Área de representante
-        </a>
-    </div>
-
-        <div class="nav-direita">
-
-            <a href="perfil.php" class="perfil-link">
-                <i class="fa-solid fa-user"></i>
-            </a>
-
-            <a href="logout.php" class="btn-sair">
-                Sair
-            </a>
-
-        </div>
-
-    </nav>
-
-
-    <!-- CONTEÚDO -->
-    <main class="conteudo">
-
+    <div id="headerSet"></div>
+    <!-- <a href="Functions/logout.php" class="btn-sair">
+        Sair
+    </a> -->
+    <main>
         <!-- CABEÇALHO -->
-        <section class="cabecalho">
+        <section class="hello">
+            <h1>
+                Olá, <?= e($_SESSION['user_name'] ?? 'Representante') ?>!
+            </h1>
 
-            <div>
-
-                <span class="tag">
-                    ÁREA DO REPRESENTANTE
-                </span>
-
-                <h1>
-                    Olá, <?= e($_SESSION['user_name'] ?? 'Representante') ?>!
-                </h1>
-
-                <p>
-                    Gerencie as informações e atividades das turmas que você representa.
-                </p>
-
-            </div>
-
+            <p>
+                Gerencie as informações e atividades das turmas que você representa.
+            </p>
         </section>
 
 
         <!-- RESUMO -->
-        <section class="resumo">
-
+        <section class="summary">
             <div class="card-resumo">
-
-                <div class="icone roxo">
-                    <i class="fa-solid fa-people-group"></i>
-                </div>
-
-                <div>
-
-                    <span>Turmas representadas</span>
-
-                    <strong>
-                        <?= count($turmas) ?>
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="card-resumo">
-
                 <div class="icone azul">
                     <i class="fa-solid fa-list-check"></i>
                 </div>
-
                 <div>
-
                     <span>Atividades</span>
-
                     <strong>
                         <?= $atividades ?>
                     </strong>
-
                 </div>
-
             </div>
-
-
             <div class="card-resumo">
-
                 <div class="icone verde">
                     <i class="fa-solid fa-bullhorn"></i>
                 </div>
-
                 <div>
-
                     <span>Avisos</span>
-
                     <strong>
-                        0
+                        [X]
                     </strong>
-
                 </div>
-
             </div>
-
+            <div class="card-resumo">
+                <div class="icone roxo">
+                    <i class="fa-solid fa-people-group"></i>
+                </div>
+                <div>
+                    <span>Eventos</span>
+                    <strong>
+                        <?=  $eventos ?>
+                    </strong>
+                </div>
+            </div>
         </section>
 
 
@@ -305,8 +232,7 @@ $atividades = (int) $stmt->fetchColumn();
 
                             <a
                                 href="adminTurma.php?id=<?= (int) $turma['id'] ?>"
-                                class="btn-gerenciar"
-                            >
+                                class="btn-gerenciar">
 
                                 Gerenciar turma
 
@@ -358,8 +284,7 @@ $atividades = (int) $stmt->fetchColumn();
                     <!-- CRIAR ATIVIDADE -->
                     <a
                         href="criarAtividade.php?turma_id=<?= (int) $turmaRapida['id'] ?>"
-                        class="acao-card"
-                    >
+                        class="acao-card">
 
                         <div class="acao-icone roxo">
 
@@ -390,8 +315,7 @@ $atividades = (int) $stmt->fetchColumn();
                     <!-- CRIAR AVISO -->
                     <a
                         href="#"
-                        class="acao-card"
-                    >
+                        class="acao-card">
 
                         <div class="acao-icone azul">
 
@@ -421,8 +345,7 @@ $atividades = (int) $stmt->fetchColumn();
                     <!-- ADICIONAR EVENTO -->
                     <a
                         href="#"
-                        class="acao-card"
-                    >
+                        class="acao-card">
 
                         <div class="acao-icone verde">
 
@@ -478,9 +401,9 @@ $atividades = (int) $stmt->fetchColumn();
 
     </main>
 
-</div>
+    </div>
 
+    <script src="Script/headerSet.js"></script>
 </body>
 
 </html>
-```

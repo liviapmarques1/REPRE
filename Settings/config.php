@@ -12,7 +12,7 @@ function db(): PDO
 
 if ($pdo === null) {
         $dsn = 'mysql:host=' . DB_HOST .
-               ';port=3308' .
+               ';port=3306' .
                ';dbname=' . DB_NAME .
                ';charset=utf8mb4';
 

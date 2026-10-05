@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="#" class="forgot-password">Esqueci minha senha</a>
         <div class="register-link">
           <span>Não tem uma conta?</span>
-          <a href="cadastro.html">Cadastre-se</a>
+          <a href="register.php">Cadastre-se</a>
         </div>
       </div>
     </main>
