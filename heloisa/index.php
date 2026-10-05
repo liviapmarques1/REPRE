@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>REPRE</title>
-    <link rel="stylesheet" href="Styles/index.css" />
+    <link rel="stylesheet" href="index.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -13,13 +13,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
-    <link rel="shortcut icon" href="Images/Logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/Logo.png" type="image/x-icon" />
   </head>
 
   <body>
     <div class="bg-books" id="bgBooks" aria-hidden="true"></div>
     <header>
-      <img src="Images/Logo.png" alt="Logo" height="30px" />
+      <img src="/img/Logo.png" alt="Logo" height="30px" />
       <!-- <i class="fa-solid fa-graduation-cap" style="color: #584391;"></i> -->
       REPRE
     </header>
@@ -45,7 +45,7 @@
           <i class="fa-solid fa-right-to-bracket"></i>
           Entrar
         </a>
-        <a href="register.php" class="btn btn-cadastrar">
+        <a href="cadastro.php" class="btn btn-cadastrar">
           <i class="fa-solid fa-user-plus"></i>
           Criar conta
         </a>

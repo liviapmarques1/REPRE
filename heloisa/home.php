@@ -1,0 +1,227 @@
+<?php
+require_once __DIR__ . '/auth.php';
+require_login();
+?>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repre</title>
+  <link rel="stylesheet" href="/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+  <div class="layout">
+
+    <div class="navbar">
+      <div class="logo">
+        <div class="logo-icon">
+          REPRE
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="home.php">Home</a>
+        <a href="#">Atividades</a>
+        <a href="#">
+          Calendário
+          <i class="fa-solid fa-caret-down"></i>
+        </a>
+        <a href="desempenho.php">Desempenho</a>
+        <a href="#">
+          Atlética e Grêmio
+          <i class="fa-solid fa-caret-down"></i>
+        </a>
+      </div>
+      <div class="sininho">
+        <i class="fa-solid fa-bell" style="color: #584391;"></i>
+      </div>
+      <div class="profile">
+        <a href="perfil.php">
+        <img src="imagem-foto-perfil.jpg" alt="Foto de perfil"></a>
+      </div>
+    </div>
+
+
+
+    <main class="content">
+      <div class="containerWelcome">
+        <section class="welcome">
+          <div class="welcome-text">
+            <h1>
+              Bem-vindo(a), <?= e($_SESSION['user_name']) ?>!
+            </h1>
+            <p>
+              Confira suas atividades abaixo
+            </p>
+          </div>
+          <div class="citacao">
+            “A alfabetização, portanto, é toda a pedagogia: aprender a ler é aprender a dizer a sua palavra. E a sua
+            palavra humana imita a palavra divina: é criadora.”- Paulo Freire
+          </div>
+        </section>
+
+        <div class="dashboard-conteudo">
+
+          <section class="resumo-section">
+
+            <h2 class="resumo-title">
+              Resumo Diário
+            </h2>
+
+            <div class="resumo-scroll-wrap" id="resumoScroll">
+
+              <div class="resumo-inner">
+
+                <div class="resumo-card verde">
+                  <span class="resumo-card-num"><i class="fa-regular fa-circle-check" style="color: #30b75f;"></i>
+                    10</span>
+                  <span class="resumo-card-label">
+                    Atividades Concluídas
+                  </span>
+                </div>
+
+                <div class="resumo-card amarelo">
+                  <span class="resumo-card-num"><i class="fa-solid fa-hourglass-half" style="color: #f39c12;"></i>
+                    10</span>
+                  <span class="resumo-card-label">
+                    Atividades Pendentes
+                  </span>
+                </div>
+
+                <div class="resumo-card azul">
+                  <span class="resumo-card-num"><i class="fa-solid fa-person-walking" style="color: #3498db;"></i>
+                    10</span>
+                  <span class="resumo-card-label">
+                    Atividades em Andamento
+                  </span>
+                </div>
+
+                <div class="resumo-card vermei">
+                  <span class="resumo-card-num"><i class="fa-solid fa-clock" style="color: #e74c3c;"></i> 10</span>
+                  <span class="resumo-card-label">
+                    Atividades Atrasadas
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+
+          <section class="wrapper-atividades">
+            <div class="atividades-coluna">
+
+              <div class="atividades-header">
+                <div class="atividades-titulo">
+                  <i class="fa-regular fa-calendar"></i>
+                  <h2 class="title-atividades">
+                    Atividades Pendentes
+                  </h2>
+                  <span class="contador-atividades">
+                    10 tarefas
+                  </span>
+                </div>
+
+
+                <select class="filtro-materias" id="filtro-materias">
+                  <option value="todas">
+                    Todas as matérias
+                  </option>
+                  <option value="matematica">
+                    Matemática
+                  </option>
+                  <option value="filosofia">
+                    Filosofia
+                  </option>
+                  <option value="geografia">
+                    Geografia
+                  </option>
+                  <option value="ingles">
+                    Inglês
+                  </option>
+                  <option value="historia">
+                    História
+                  </option>
+                </select>
+              </div>
+
+              <div class="cards-container" id="cards-container">
+              </div>
+              <div class="ver-todas-atividades">
+                <a href="#">
+                  Ver todas as atividades
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </section>
+
+
+
+          <section class="coluna-calendario">
+
+            <div class="calendario">
+              <div class="calendario-header">
+                <button id="prev">❮</button>
+                <h2 id="mes"></h2>
+
+                <button id="next">❯</button>
+
+              </div>
+
+
+              <div class="weekdays">
+
+                <span>D</span>
+                <span>S</span>
+                <span>T</span>
+                <span>Q</span>
+                <span>Q</span>
+                <span>S</span>
+                <span>S</span>
+
+              </div>
+
+
+              <div id="calendarDays" class="days">
+              </div>
+        </div>
+
+        <div id="eventoInfo" class="evento-info">
+
+          Selecione uma data
+
+        </div>
+
+
+        <!-- PRÓXIMAS ATIVIDADES -->
+
+        <div class="wrapper-proximos">
+
+          <h2 class="title-proximo">
+            Próximas atividades
+          </h2>
+
+          <div class="cards-container" id="proximos-container">
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+    <footer class="footer">
+      © Todos os direitos reservados à New World.
+    </footer>
+  </div>
+
+  <script src="/js/home.js"></script>
+</body>
+
+</html>
