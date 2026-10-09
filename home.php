@@ -68,7 +68,7 @@
         <!--Atividades pendentes cards -->
         <div id="cards-container"></div>
         <!-- ----------------------------- -->
-        <a href="activities.html" class="see-all-activities">
+        <a href="activities.php" class="see-all-activities">
           Ver todas as atividades
           <i class="fa-solid fa-arrow-right"></i>
         </a>

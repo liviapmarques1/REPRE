@@ -8,6 +8,10 @@
     color: inherit;
 }
 
+html {
+    height: 100vh;
+}
+
 body {
     padding-top: 90px;
     font-family: 'Montserrat', sans-serif;
@@ -16,7 +20,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     max-width: 100vw;
-    min-height: 100vh;
 }
 
 
@@ -41,7 +44,10 @@ body {
 
 /* CONTEÚDO */
 
-main {}
+main {
+    display: flex;
+    flex-direction: column;
+}
 
 
 /* CABEÇALHO */
@@ -51,6 +57,7 @@ main {}
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .hello h1 {
@@ -67,11 +74,12 @@ main {}
 
 /* RESUMO */
 
-.summary {
+#summaryScroll {
     display: flex;
+    margin-bottom: 10px;
 }
 
-.card-resumo {
+.card-summary {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -82,42 +90,38 @@ main {}
     box-shadow: var(--shadow);
 }
 
-.card-resumo span {
+.card-summary span {
     display: block;
     color: var(--secondary-blue);
     font-size: 13px;
 }
 
-.card-resumo strong {
+.card-summary strong {
     font-size: 22px;
     color: var(--title-blue);
 }
 
-.icone,
-.acao-icone {
-    width: 48px;
-    height: 48px;
-
+.icon,
+.action-icon {
     border-radius: 14px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
+    padding: 15px;
     font-size: 19px;
 }
 
-.roxo {
+.purple {
     background: #f1edff;
     color: #6543d7;
 }
 
-.azul {
+.blue {
     background: #eaf3ff;
     color: #3470d9;
 }
 
-.verde {
+.green {
     background: #e8f8f3;
     color: #15957c;
 }
@@ -125,30 +129,27 @@ main {}
 
 /* SEÇÕES */
 
-.secao {
-    background: #ffffff;
-
-    border: 1px solid #e9e9f1;
-    border-radius: 20px;
-
-    padding: 25px;
-
-    margin-bottom: 25px;
-
-    box-shadow: 0 5px 20px rgba(44, 55, 120, .05);
+.sections {
+    margin: 10px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--large-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: .2s;
 }
 
-.secao-header {
-    margin-bottom: 20px;
-}
+.sections-header {}
 
-.secao-header h2 {
+.sections-header h2 {
     font-size: 21px;
-    margin-bottom: 5px;
+    color: var(--title-blue);
 }
 
-.secao-header p {
-    color: #858ba6;
+.sections-header p {
+    color: var(--secondary-blue);
     font-size: 13px;
 }
 
@@ -159,15 +160,6 @@ main {}
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
-}
-
-.turma-card {
-    padding: 20px;
-
-    border: 1px solid #e8e8f0;
-    border-radius: 17px;
-
-    transition: .2s;
 }
 
 .turma-card:hover {

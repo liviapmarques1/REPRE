@@ -3,14 +3,13 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/Settings/auth.php';
-
-
 require_once 'Settings/permissoes.php';
 
 require_role(['representante']);
 
 $usuarioId = (int) $_SESSION['user_id'];
 
+// ==================== TURMAS ====================
 $sql = "
     SELECT
         t.id,
@@ -28,14 +27,12 @@ $sql = "
 ";
 
 $stmt = db()->prepare($sql);
-
-$stmt->execute([
-    ':aluno_id' => $usuarioId
-]);
-
+$stmt->execute([':aluno_id' => $usuarioId]);
 $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "
+
+// ==================== ATIVIDADES ====================
+$sqlAtividades = "
     SELECT COUNT(*)
     FROM atividades a
     INNER JOIN turma_disciplinas td
@@ -46,15 +43,30 @@ $sql = "
       AND tm.papel = 'representante'
 ";
 
-$stmt = db()->prepare($sql);
-
-$stmt->execute([
-    ':aluno_id' => $usuarioId
-]);
-
+$stmt = db()->prepare($sqlAtividades);
+$stmt->execute([':aluno_id' => $usuarioId]);
 $atividades = (int) $stmt->fetchColumn();
 
-$sql = "
+
+// ==================== AVISOS ====================
+$sqlAvisos = "
+    SELECT COUNT(*)
+    FROM avisos a
+    LEFT JOIN turma_disciplinas td
+        ON td.id = a.turma_disciplina_id
+    INNER JOIN turma_membros tm
+        ON tm.turma_id = COALESCE(td.turma_id, a.turma_id)
+    WHERE tm.aluno_id = :aluno_id
+      AND tm.papel = 'representante'
+";
+
+$stmt = db()->prepare($sqlAvisos);
+$stmt->execute([':aluno_id' => $usuarioId]);
+$avisos = (int) $stmt->fetchColumn();
+
+
+// ==================== EVENTOS ====================
+$sqlEventos = "
     SELECT COUNT(*)
     FROM eventos e
     INNER JOIN turma_membros tm
@@ -63,10 +75,12 @@ $sql = "
       AND tm.papel = 'representante'
 ";
 
-$stmt = db()->prepare($sql);
+$stmt = db()->prepare($sqlEventos);
 $stmt->execute([':aluno_id' => $usuarioId]);
 $eventos = (int) $stmt->fetchColumn();
+
 ?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -100,11 +114,10 @@ $eventos = (int) $stmt->fetchColumn();
             </p>
         </section>
 
-
         <!-- RESUMO -->
-        <section class="summary">
-            <div class="card-resumo">
-                <div class="icone azul">
+        <section id="summaryScroll">
+            <a class="card-summary" href="activities.php">
+                <div class="icon blue">
                     <i class="fa-solid fa-list-check"></i>
                 </div>
                 <div>
@@ -113,134 +126,104 @@ $eventos = (int) $stmt->fetchColumn();
                         <?= $atividades ?>
                     </strong>
                 </div>
-            </div>
-            <div class="card-resumo">
-                <div class="icone verde">
+            </a>
+            <a class="card-summary" href="communities.php">
+                <div class="icon green">
                     <i class="fa-solid fa-bullhorn"></i>
                 </div>
                 <div>
                     <span>Avisos</span>
                     <strong>
-                        [X]
+                        <?= $avisos ?>
                     </strong>
                 </div>
-            </div>
-            <div class="card-resumo">
-                <div class="icone roxo">
+            </a>
+            <a class="card-summary" href="home.php">
+                <div class="icon purple">
                     <i class="fa-solid fa-people-group"></i>
                 </div>
                 <div>
                     <span>Eventos</span>
                     <strong>
-                        <?=  $eventos ?>
+                        <?= $eventos ?>
                     </strong>
                 </div>
-            </div>
+            </a>
         </section>
 
 
         <!-- TURMAS -->
-        <section class="secao">
-
-            <div class="secao-header">
-
-                <div>
-
-                    <h2>
-                        Minhas turmas
-                    </h2>
-
-                    <p>
-                        Selecione uma turma para administrar.
-                    </p>
-
-                </div>
-
-            </div>
-
+        <section class="sections">
 
             <?php if (empty($turmas)): ?>
-
                 <div class="vazio">
-
                     <div class="vazio-icone">
                         <i class="fa-solid fa-people-group"></i>
                     </div>
-
-                    <h3>
-                        Nenhuma turma encontrada
-                    </h3>
-
-                    <p>
-                        Você ainda não foi definido como representante de nenhuma turma.
-                    </p>
-
+                    <h3>Nenhuma turma encontrada</h3>
+                    <p>Você ainda não foi definido como representante de nenhuma turma.</p>
                 </div>
 
             <?php else: ?>
-
                 <div class="turmas-grid">
-
                     <?php foreach ($turmas as $turma): ?>
+                        <div class="turma-topo">
 
-                        <article class="turma-card">
-
-                            <div class="turma-topo">
-
-                                <div class="turma-icone">
-                                    <i class="fa-solid fa-users"></i>
-                                </div>
-
-                                <span class="status">
-                                    Ativa
-                                </span>
-
+                            <div class="turma-icone">
+                                <i class="fa-solid fa-users"></i>
                             </div>
 
+                            <span class="status">
+                                Ativa
+                            </span>
 
-                            <h3>
-                                <?= e($turma['nome']) ?>
-                            </h3>
+                        </div>
+                        <div class="sections-header">
+                            <h2>Minha turma</h2>
+                        </div>
 
-
-                            <p class="serie">
-                                <?= e($turma['serie'] ?? 'Turma') ?>
-                            </p>
-
-
-                            <div class="turma-info">
-
-                                <span>
-
-                                    <i class="fa-regular fa-calendar"></i>
-
-                                    <?= e((string) $turma['ano_letivo']) ?>
-
-                                </span>
+                        <h3>
+                            <?= e($turma['nome']) ?>
+                        </h3>
 
 
-                                <span>
-
-                                    <i class="fa-regular fa-clock"></i>
-
-                                    <?= e(ucfirst($turma['turno'])) ?>
-
-                                </span>
-
-                            </div>
+                        <p class="serie">
+                            <?= e($turma['serie'] ?? 'Turma') ?>
+                        </p>
 
 
-                            <a
-                                href="adminTurma.php?id=<?= (int) $turma['id'] ?>"
-                                class="btn-gerenciar">
+                        <div class="turma-info">
 
-                                Gerenciar turma
+                            <span>
 
-                                <i class="fa-solid fa-arrow-right"></i>
+                                <i class="fa-regular fa-calendar"></i>
 
-                            </a>
+                                <?= e((string) $turma['ano_letivo']) ?>
 
-                        </article>
+                            </span>
+
+
+                            <span>
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                <?= e(ucfirst($turma['turno'])) ?>
+
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="adminTurma.php?id=<?= (int) $turma['id'] ?>"
+                            class="btn-gerenciar">
+
+                            Gerenciar turma
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
 
                     <?php endforeach; ?>
 
@@ -402,7 +385,7 @@ $eventos = (int) $stmt->fetchColumn();
     </main>
 
     </div>
-
+    <script src="Script/adminRepresentante.js"></script>
     <script src="Script/headerSet.js"></script>
 </body>
 

@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Tempo de geração: 05/10/2026 às 21:46
+-- Host: 127.0.0.1:3308
+-- Tempo de geração: 09/10/2026 às 13:45
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bancorepre`
 --
+CREATE DATABASE IF NOT EXISTS `bancorepre` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `bancorepre`;
 
 -- --------------------------------------------------------
 
@@ -30,13 +32,13 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `alunos`;
 CREATE TABLE IF NOT EXISTS `alunos` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `senha_hash` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` enum('aluno','professor','representante','gremio_atletica','coordenacao') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'aluno',
-  `status_conta` enum('pendente','ativo','recusado') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ativo',
-  `matricula` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `foto_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nome` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `senha_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` enum('aluno','professor','representante','gremio_atletica','coordenacao') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'aluno',
+  `status_conta` enum('pendente','ativo','recusado') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ativo',
+  `matricula` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `ultimo_login` datetime DEFAULT NULL,
   `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -57,7 +59,7 @@ INSERT INTO `alunos` (`id`, `nome`, `email`, `senha_hash`, `tipo`, `status_conta
 (2, 'bolsonaro lixo', 'lixoso@teste.com', '$2y$12$xdRBz6Ly6Rsmw0Wcd82ewOGcNKScHIySQa/eN4Y/MepqpeRHcGhs.', 'aluno', 'ativo', NULL, NULL, 1, '2026-09-30 13:49:22', '2026-09-30 13:47:08', '2026-09-30 13:49:22'),
 (4, 'augusto cury', 'drone@gmail.com', '$2y$12$slquBYcFfOmfMAsTERaEceiNEbCiH4EuUendM9g32LMjR4ANz7ujC', 'aluno', 'ativo', NULL, NULL, 1, '2026-10-01 12:24:20', '2026-09-30 14:05:58', '2026-10-01 12:24:20'),
 (11, 'Renatinha', 'renatinha@gmail.com', '$2y$12$dbas4ckHwhC7PqyEz9XbPuuWKK5MtzrM564nQi0mUq2CAlQRWfnFS', 'professor', 'ativo', NULL, NULL, 1, NULL, '2026-10-01 14:51:46', '2026-10-01 14:52:09'),
-(12, 'Matheus Lima Camilo', 'camilomatheus0710@gmail.com', '$2y$12$pOjJrL4hxunZ/GjhHYdfJ.MD25Z60KhnEwVVesqe814VrYzH3iIB.', 'representante', 'ativo', NULL, NULL, 1, '2026-10-05 18:13:26', '2026-10-02 05:11:42', '2026-10-05 18:13:26'),
+(12, 'Matheus Lima Camilo', 'camilomatheus0710@gmail.com', '$2y$12$pOjJrL4hxunZ/GjhHYdfJ.MD25Z60KhnEwVVesqe814VrYzH3iIB.', 'representante', 'ativo', NULL, NULL, 1, '2026-10-09 09:07:52', '2026-10-02 05:11:42', '2026-10-09 09:07:52'),
 (13, 'Lívia Pinheiro Marques', 'liviapmarques1@gmail.com', '$2y$10$cvZdqTMD7V7mMa.HKRxlNuEVWVS/a1N2jCk8gtaxOUuyPkRWR6.Ru', 'aluno', 'ativo', NULL, NULL, 1, '2026-10-05 18:13:04', '2026-10-05 18:12:43', '2026-10-05 18:13:04');
 
 -- --------------------------------------------------------
@@ -99,10 +101,10 @@ CREATE TABLE IF NOT EXISTS `atividades` (
   `turma_disciplina_id` int UNSIGNED NOT NULL,
   `periodo_id` int UNSIGNED DEFAULT NULL,
   `criador_id` int UNSIGNED NOT NULL,
-  `titulo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci,
-  `tipo` enum('tarefa','trabalho','prova','quiz','projeto','leitura') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'tarefa',
-  `status` enum('rascunho','publicada','encerrada') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'rascunho',
+  `titulo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `tipo` enum('tarefa','trabalho','prova','quiz','projeto','leitura') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'tarefa',
+  `status` enum('rascunho','publicada','encerrada') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'rascunho',
   `em_grupo` tinyint(1) NOT NULL DEFAULT '0',
   `pontos` decimal(5,2) NOT NULL DEFAULT '10.00',
   `peso` decimal(4,2) NOT NULL DEFAULT '1.00',
@@ -142,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `aulas` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `turma_disciplina_id` int UNSIGNED NOT NULL,
   `data_aula` date NOT NULL,
-  `conteudo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `conteudo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_aula` (`turma_disciplina_id`,`data_aula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -159,22 +161,23 @@ CREATE TABLE IF NOT EXISTS `avisos` (
   `turma_id` int UNSIGNED DEFAULT NULL,
   `turma_disciplina_id` int UNSIGNED DEFAULT NULL,
   `autor_id` int UNSIGNED NOT NULL,
-  `titulo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `conteudo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `titulo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `conteudo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fixado` tinyint(1) NOT NULL DEFAULT '0',
   `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `turma_id` (`turma_id`),
   KEY `turma_disciplina_id` (`turma_disciplina_id`),
   KEY `autor_id` (`autor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `avisos`
 --
 
 INSERT INTO `avisos` (`id`, `turma_id`, `turma_disciplina_id`, `autor_id`, `titulo`, `conteudo`, `fixado`, `criado_em`) VALUES
-(1, NULL, NULL, 12, 'Trazer EVA amanha', 'Para a aula de artes será nescessario EVA amanha, trazer por favor.', 0, '2026-10-05 18:40:36');
+(1, NULL, 1, 12, 'Trazer EVA amanha', 'Para a aula de artes será nescessario EVA amanha, trazer por favor.', 0, '2026-10-05 18:40:36'),
+(2, 1, NULL, 12, 'Feriado prolongado', 'Sem aula na proxima semana', 0, '2026-10-09 09:36:19');
 
 -- --------------------------------------------------------
 
@@ -187,8 +190,8 @@ CREATE TABLE IF NOT EXISTS `canais` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `turma_disciplina_id` int UNSIGNED NOT NULL,
   `equipe_id` int UNSIGNED DEFAULT NULL,
-  `nome` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` enum('geral','avisos','duvidas','equipe') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'geral',
+  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` enum('geral','avisos','duvidas','equipe') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'geral',
   `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `turma_disciplina_id` (`turma_disciplina_id`),
@@ -226,7 +229,7 @@ DROP TABLE IF EXISTS `criterios_avaliacao`;
 CREATE TABLE IF NOT EXISTS `criterios_avaliacao` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `atividade_id` int UNSIGNED NOT NULL,
-  `descricao` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descricao` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `pontos_max` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `atividade_id` (`atividade_id`)
@@ -241,8 +244,8 @@ CREATE TABLE IF NOT EXISTS `criterios_avaliacao` (
 DROP TABLE IF EXISTS `disciplinas`;
 CREATE TABLE IF NOT EXISTS `disciplinas` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cor_hex` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#6B5CC5',
+  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cor_hex` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#6B5CC5',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nome` (`nome`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -307,7 +310,7 @@ DROP TABLE IF EXISTS `equipes`;
 CREATE TABLE IF NOT EXISTS `equipes` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `turma_disciplina_id` int UNSIGNED NOT NULL,
-  `nome` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `turma_disciplina_id` (`turma_disciplina_id`)
@@ -340,9 +343,9 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `turma_id` int UNSIGNED DEFAULT NULL,
   `atividade_id` int UNSIGNED DEFAULT NULL,
   `criador_id` int UNSIGNED NOT NULL,
-  `titulo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci,
-  `tipo` enum('aula','prova','entrega','reuniao','feriado','outro') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'outro',
+  `titulo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `tipo` enum('aula','prova','entrega','reuniao','feriado','outro') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'outro',
   `inicio` datetime NOT NULL,
   `fim` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -369,10 +372,10 @@ DROP TABLE IF EXISTS `log_auditoria`;
 CREATE TABLE IF NOT EXISTS `log_auditoria` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario_id` int UNSIGNED DEFAULT NULL,
-  `acao` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `entidade` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `acao` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `entidade` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `entidade_id` bigint UNSIGNED DEFAULT NULL,
-  `ip` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`)
@@ -403,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `mensagens` (
   `canal_id` int UNSIGNED NOT NULL,
   `autor_id` int UNSIGNED NOT NULL,
   `resposta_a_id` bigint UNSIGNED DEFAULT NULL,
-  `conteudo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `conteudo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `editada` tinyint(1) NOT NULL DEFAULT '0',
   `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -422,10 +425,10 @@ DROP TABLE IF EXISTS `notificacoes`;
 CREATE TABLE IF NOT EXISTS `notificacoes` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario_id` int UNSIGNED NOT NULL,
-  `tipo` enum('nova_atividade','nota','prazo','mensagem','aviso','sistema') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `titulo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mensagem` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipo` enum('nova_atividade','nota','prazo','mensagem','aviso','sistema') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `titulo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mensagem` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lida` tinyint(1) NOT NULL DEFAULT '0',
   `criada_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -469,7 +472,7 @@ DROP TABLE IF EXISTS `presencas`;
 CREATE TABLE IF NOT EXISTS `presencas` (
   `aula_id` int UNSIGNED NOT NULL,
   `aluno_id` int UNSIGNED NOT NULL,
-  `situacao` enum('presente','falta','justificada') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'presente',
+  `situacao` enum('presente','falta','justificada') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'presente',
   PRIMARY KEY (`aula_id`,`aluno_id`),
   KEY `aluno_id` (`aluno_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -485,10 +488,10 @@ CREATE TABLE IF NOT EXISTS `tarefas_pessoais` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario_id` int UNSIGNED NOT NULL,
   `atividade_id` int UNSIGNED DEFAULT NULL,
-  `titulo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci,
-  `coluna` enum('a_fazer','fazendo','concluida') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'a_fazer',
-  `prioridade` enum('baixa','media','alta') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'media',
+  `titulo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `coluna` enum('a_fazer','fazendo','concluida') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'a_fazer',
+  `prioridade` enum('baixa','media','alta') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'media',
   `prazo` date DEFAULT NULL,
   `criada_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -505,9 +508,9 @@ CREATE TABLE IF NOT EXISTS `tarefas_pessoais` (
 DROP TABLE IF EXISTS `turmas`;
 CREATE TABLE IF NOT EXISTS `turmas` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `serie` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `turno` enum('manha','tarde','noite') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'manha',
+  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `serie` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `turno` enum('Manhã','Tarde','Noite','Integral') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Manhã',
   `ano_letivo` year NOT NULL,
   `ativa` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
@@ -519,7 +522,7 @@ CREATE TABLE IF NOT EXISTS `turmas` (
 --
 
 INSERT INTO `turmas` (`id`, `nome`, `serie`, `turno`, `ano_letivo`, `ativa`) VALUES
-(1, '3° DS', 'Ensino Médio', 'manha', '2026', 1);
+(1, '3° DS', 'Ensino Médio', 'Manhã', '2026', 1);
 
 -- --------------------------------------------------------
 
@@ -558,7 +561,7 @@ DROP TABLE IF EXISTS `turma_membros`;
 CREATE TABLE IF NOT EXISTS `turma_membros` (
   `turma_id` int UNSIGNED NOT NULL,
   `aluno_id` int UNSIGNED NOT NULL,
-  `papel` enum('aluno','representante') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'aluno',
+  `papel` enum('aluno','representante') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'aluno',
   `entrou_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`turma_id`,`aluno_id`),
   KEY `aluno_id` (`aluno_id`)

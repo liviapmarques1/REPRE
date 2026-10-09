@@ -171,7 +171,8 @@
         transform: translateX(-50%);
         margin-top: 20px;
         box-shadow: 7px 7px 7px #3333333b;
-        width: 90%;
+        width: 94%;
+
       }
       .logo p{
         display: none;
@@ -190,8 +191,8 @@
         height: auto;
         background: transparent;
         transform: none;
-        gap: 10px;
-        padding: 0px 0px 0px 5px;
+        justify-content: space-between;
+        padding: 0px 0px 0px 10px;
       }
 
       #navbar a {
@@ -240,14 +241,14 @@
   </style>
 
   <header>
-    <a href="home.html" class="logo">
+    <a href="home.php" class="logo">
       <img src="Images/Logo.png" alt="Logo" height="30" />
       <p>REPRE</p>
     </a>
     <nav id="navbar">
-      <a href="activites.html">Atividades</a>
-      <a href="performance.html">Desempenho</a>
-      <a href="community.html">Comunidade</a>
+      <a href="activites.php">Atividades</a>
+      <a href="performance.php">Desempenho</a>
+      <a href="community.php">Comunidade</a>
       <?php if (seRepresentante()): ?>
       <a href="adminRepresentante.php" class="representante">
         <i class="fa-solid fa-people-group"></i>
